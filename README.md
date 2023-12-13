@@ -1,6 +1,6 @@
 Risein Final Project:
 
->>Part 1 - Information<<
+>>Part 1 - Information
 
 Star System Collection: NFT mints of our Solar System objects (and possible beyond) with the following data:
 
@@ -16,7 +16,7 @@ Rarity: Common (Astereoids), Rare (Planets and Sun), Legendary (Earth)
 
 Short_description: Description about each object.
 
->>Part 2 - Codigo<<
+>>Part 2 - Codigo
 
 Codigo CIDL (Código Interface Description Language) is used to create this project on solana.
 
@@ -28,7 +28,7 @@ We will write logic to 3 files as shown ................
 
 Go to the folder with "Cargo.toml" (cd program should work) and run "cargo build-sbf".
 
->>Part 3 - Solana<<
+>>Part 3 - Solana
 
 Run "solana config set --url devnet"
 
@@ -38,7 +38,7 @@ solana program deploy target/deploy/nft.so
 
 Copy and save program id for testing in Part 4.
 
->>Part 4 - Test<<
+>>Part 4 - Test
 
 Time to test to code we have just written:
 
