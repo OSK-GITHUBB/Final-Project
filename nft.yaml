@@ -1,0 +1,87 @@
+cidl: "0.8"
+info:
+  name: NFT
+  title: Star Systems NFT
+  version: 0.0.1
+  license:
+    name: Unlicense
+    identifier: Unlicense
+types:
+  Metadata:
+    solana:
+      seeds:
+        - name: "Star System Collection"
+        - name: mint
+          type: sol:pubkey
+    fields:
+      - name: Solar_System_Object_Type
+        type: string
+        solana:
+          attributes: [ cap:255 ]
+      - name: name
+        type: string
+        solana:
+          attributes: [ cap:255 ]
+      - name: rarity
+        type: string
+        solana:
+          attributes: [ cap:16 ]
+      - name: short_description
+        type: string
+        solana:
+          attributes: [ cap:255 ]
+      - name: mint
+        type: sol:pubkey
+      - name: assoc_account
+        type: rs:option<sol:pubkey>
+methods:
+  - name: mint
+    uses:
+      - csl_spl_token.initialize_mint2
+      - csl_spl_assoc_token.create
+      - csl_spl_token.mint_to
+      - csl_spl_token.set_authority
+    inputs:
+      - name: mint
+        type: csl_spl_token.Mint
+        solana:
+          attributes: [ init ]
+      - name: "Star System Collection"
+        type: Metadata
+        solana:
+          attributes: [ init ]
+          seeds:
+            mint: mint
+      - name: Solar_System_Object_Type
+        type: string
+      - name: name
+        type: string
+      - name: rarity
+        type: string
+      - name: short_description
+        type: string
+  - name: transfer
+    uses:
+      - csl_spl_assoc_token.create
+      - csl_spl_token.transfer_checked
+    inputs:
+      - name: mint
+        type: csl_spl_token.Mint
+      - name: Solar_System_Object_Type
+        type: Metadata
+        solana:
+          attributes: [ mut ]
+          seeds:
+            mint: mint
+  - name: burn
+    uses:
+      - csl_spl_token.burn
+    inputs:
+      - name: mint
+        type: csl_spl_token.Mint
+      - name: "Star System Collection"
+        type: Metadata
+        solana:
+          attributes: [ mut ]
+          seeds:
+            mint: mint
