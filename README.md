@@ -24,13 +24,14 @@ Open codigo and create nft.yaml as shown.
 
 Run "codigo solana generate nft.yaml"
 
-We will write logic to 3 files as shown ................
+We will write logic to 3 files as shown under program/src (burn, mint, and transfer files).
 
+Let's build:
 Go to the folder with "Cargo.toml" (cd program should work) and run "cargo build-sbf".
 
 >>Part 3 - Solana
 
-Run "solana config set --url devnet"
+Run "solana config set --url devnet" to change solana network to devnet.
 
 Get as many solana coins as you need with command: "solana airdrop 1"
 
@@ -44,9 +45,9 @@ Time to test to code we have just written:
 
 navigate to the program_client directory and run: "yarn install"
 
-"yarn add @solana/spl-token"
+we still need these extras for tokens: "yarn add @solana/spl-token"
 
-in program_client directory; create an app.ts file as shown.
+in program_client directory; create an app.ts file as shown under the same folder.
 
 npx ts-node app.ts <YOUR_PROGRAM_ID>
 
